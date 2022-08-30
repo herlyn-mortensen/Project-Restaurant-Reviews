@@ -26,6 +26,19 @@ app.get('/', function(req, res){
     res.render('index.hbs');
 })
 
+app.get('/login', function(req, res){
+    res.render('login.hbs');
+})
+
+
+app.get('/find-restaurant', function(req,res){
+    res.render('find-restaurant.hbs')
+})
+
+app.get('/write-review', function(req,res){
+    res.render('write-review.hbs')
+})
+
 app.listen(3000, function(){
     console.log("Server has started")
 })
