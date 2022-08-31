@@ -44,6 +44,9 @@ app.get('/write-review', function(req,res){
     res.render('write-review.hbs')
 })
 
+// app.get('/reviews', function(req,res){
+//     res.render('editreview.hbs')
+// })
 
 const MONGO_URI = process.env.MONGO_URI;
 const DB_NAME = process.env.DB_NAME;
@@ -134,7 +137,6 @@ async function main (){
     })
 
 
-
     app.post('/mongo/write-review', async function(req,res){
         console.log(req.body)
         const results = await db.collection('reviews').insertOne({
@@ -178,6 +180,29 @@ async function main (){
 
         await res.redirect('/')
     })
+
+    // app.put('/reviews/:reviewId', async function (req, res) {
+
+    //     const review = await db.collection('reviews').findOne({
+    //         '_id': ObjectID(req.params.reviewId)
+    //     })
+
+    //     const results = await db.collection('reviews').updateOne({
+    //         '_id': ObjectID(req.params.reviewId)
+    //     }, {
+    //         "$set": {
+    //             'title': req.body.title ? req.body.title : review.title,  // review is the original document
+    //             'food': req.body.food ? req.body.food : review.food,
+    //             'content': req.body.content ? req.body.content : review.content,
+    //             'rating': req.body.rating ? req.body.rating : review.rating
+    //         }
+    //     })
+
+    //     res.redirect('/find-restaurant.hbs')
+    // })
+
+
+
 
     app.post('/delete/reviews/:reviewId', async function (req, res) {
         console.log("deleted")

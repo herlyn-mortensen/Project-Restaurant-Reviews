@@ -7,7 +7,18 @@ body{
 #logo {
     height: 48px;
     width: auto;
-  }
+}
+
+#hero-img {
+    display: flex;
+    justify-content: center;
+}
+
+.text-img {
+    display: flex;
+    flex-direction: column;
+}
+
 
 .bg-silver {
     background-color: #f8f8f8;
@@ -27,13 +38,11 @@ body{
     color: black;
     border: 2px black solid;
     padding: 10px 50px;
+    text-align: center;
     width: 200px;
     margin-left: 40px;
 }
 
-.header-img {
-    padding-left: 40px;
-}
 
 h1 {
     padding-left: 20px;
