@@ -2,7 +2,11 @@
 
 {{#block "content"}}
 
-<h1>Write Review</h1>
+
+<h2 class="write-review-section">Write Review</h2>
+
+<div class="write-review-section">
+
 <form method="POST" action="/mongo/write-review">
     <div>
         <label>Restaurant</label>
@@ -16,27 +20,30 @@
         <label>Cuisine:</label>
         <input type="text" name="cuisine" class="form-control"/>
     </div>
-    <div>
+    <div class="section">
         <label>Write Review</label>  
-        <input type="text" name="review" class="form-control"/>
+        <input type="text" name="review" class="form-control-review"/>
     </div>
     <div>
         <label>Ratings</label>  
         <input type="radio" class="form-check-input" name="ratings" value="1"/>
-        <label class="form-check-label">1 star</label>
+        <label class="form-check-label"><i class="fa-solid fa-star"></i></label>
         <input type="radio" class="form-check-input" name="ratings" value="2" />
-        <label class="form-check-label">2 star</label>
+        <label class="form-check-label"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></label>
         <input type="radio" class="form-check-input" name="ratings" value="3"/>
-        <label class="form-check-label">3 star</label>
+        <label class="form-check-label"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></label>
         <input type="radio" class="form-check-input" name="ratings" value="4"/>
-        <label class="form-check-label">4 star</label>
+        <label class="form-check-label"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></label>
         <input type="radio" class="form-check-input" name="ratings" value="5"/>
-        <label class="form-check-label">5 star</label>
+        <label class="form-check-label"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></label>
     </div>
     <div>
-        <input type="submit" class="btn btn-primary mt-3"/>
+        <input type="submit" class="btn btn-dark mt-3"/>
+    </div>
     </div>
 </form>
+
+
 
 {{/block}}
 {{/extends}}

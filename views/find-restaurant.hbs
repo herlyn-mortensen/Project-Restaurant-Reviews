@@ -2,36 +2,36 @@
 
 {{#block "content"}}
 
-<h1>Restaurant Name</h1>
+<h1>Search</h1>
 <form method="GET" action="/find-restaurant">
     <label>Restaurant Name</label>
     <input type="text" class="form-control" name="restaurant"/>
 
     <div>
-        <input type="submit" class="btn btn-primary mt-3"/>
+        <input type="submit" class="btn btn-dark mt-3"/>
     </div>
 </form>
 
 {{#each entries}}
-<div>
-    <hr>
-    <h4>{{restaurant}}</h4><br>
-    <p>{{title}}</p><br>
-    <p>{{cuisine}}</p><br>
-    <p>{{review}}</p><br>
-    <p>{{ratings}}</p><br>
+    <div class="find">
+        <hr>
+        <h4>{{restaurant}}</h4>
+        <p class="title">{{title}}</p>
+        <p class="cuisine">{{cuisine}}</p>
+        <p>{{review}}</p>
+        <p>{{ratings}}</p>
 
-    <form method="POST" action="/delete/reviews/{{_id}}">
-        <div>
-            <input type="submit" class="btn btn-primary mt-3" value="Delete"/>
-        </div>
-    </form>
-    <form method="GET" action="/reviews/{{_id}}">
-        <div>
-            <input type="submit" class="btn btn-primary mt-3" value="Edit"/>
-        </div>
-    </form>
-</div>
+        <form method="POST" action="/delete/reviews/{{_id}}">
+            <div>
+                <input type="submit" class="btn btn-dark mt-3" value="Delete"/>
+            </div>
+        </form>
+        <form method="GET" action="/reviews/{{_id}}">
+            <div>
+                <input type="submit" class="btn btn-light border-dark mt-3" value="Edit"/>
+            </div>
+        </form>
+    </div>
 {{/each}}
 
 {{/block}}

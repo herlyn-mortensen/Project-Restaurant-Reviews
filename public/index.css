@@ -34,3 +34,47 @@ body{
 .header-img {
     padding-left: 40px;
 }
+
+h1 {
+    padding-left: 20px;
+}
+
+h4 {
+    padding-left: 20px;
+}
+
+p {
+    padding-left: 20px;
+}
+
+form {
+    padding-left: 20px;
+}
+
+.write-review-section {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.cuisine {
+    font-style: italic;
+}
+
+.form-control {
+    width: 500px !important;
+}
+
+.section {
+    padding-top: 20px;
+}
+
+
+.form-control-review {
+    display: block;
+    width: 500px;
+    height: 200px;
+}
