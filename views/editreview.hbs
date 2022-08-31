@@ -1,27 +1,27 @@
 {{#extends 'base'}}
-
 {{#block "content"}}
 
 <h1>Write Review</h1>
-<form method="POST" action="/mongo/write-review">
+<form method="POST" action="/edit/reviews/{{entries._id}}">
     <div>
         <label>Restaurant</label>
-        <input type="text" name="restaurant" class="form-control"/>
+        <input type="text" name="restaurant" value="{{entries.restaurant}}" class="form-control"/>
     </div>
     <div>
         <label>Title:</label>
-        <input type="text" name="title" class="form-control"/>
+        <input type="text" name="title" value="{{entries.title}}" class="form-control"/>
     </div> 
     <div>
         <label>Cuisine:</label>
-        <input type="text" name="cuisine" class="form-control"/>
+        <input type="text" name="cuisine" value="{{entries.cuisine}}" class="form-control"/>
     </div>
     <div>
         <label>Write Review</label>  
-        <input type="text" name="review" class="form-control"/>
+        <input type="text" name="review" value="{{entries.review}}" class="form-control"/>
     </div>
     <div>
-        <label>Ratings</label>  
+        <label>Ratings</label> 
+        <label>{{entries.ratings}}</label> 
         <input type="radio" class="form-check-input" name="ratings" value="1"/>
         <label class="form-check-label">1 star</label>
         <input type="radio" class="form-check-input" name="ratings" value="2" />
@@ -37,6 +37,7 @@
         <input type="submit" class="btn btn-primary mt-3"/>
     </div>
 </form>
+
 
 {{/block}}
 {{/extends}}

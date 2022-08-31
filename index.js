@@ -9,18 +9,19 @@ app.set('view engine', 'hbs');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-console.log(process.env);
+// console.log(process.env);
 
 const mongoUtil = require('./MongoUtil');
 const { ObjectID } = require('bson');
 
 app.use(express.static(__dirname + '/public'));
+// app.use(express.static('public'));
 app.use(express.urlencoded({
     'extended': false  
 }))
 app.use(cors());
 app.use(express.json())
-//app.use(bodyParser)
+
 
 wax.on(hbs.handlebars);
 wax.setLayoutPath('./views/layouts');
@@ -38,10 +39,6 @@ app.get('/login', function(req, res){
     res.render('login.hbs');
 })
 
-
-app.get('/find-restaurant', function(req,res){
-    res.render('find-restaurant.hbs')
-})
 
 app.get('/write-review', function(req,res){
     res.render('write-review.hbs')
@@ -91,18 +88,11 @@ function checkIfAuthenticatedJWT(req, res, next){
 
 
 async function main (){
-    //console.log("load")
     const db = await mongoUtil.connect(MONGO_URI, DB_NAME);
    
    
 
-    // app.get('/', function(req,res){
-    //     res.json({
-    //        'message':'I love candies and cupcakes'
-    //     });
-    //    })
-
-    app.get('/mongo/find-restaurant', async function(req,res){
+    app.get('/find-restaurant', async function(req,res){
        
         try {
 
@@ -132,7 +122,7 @@ async function main (){
                 'ratings': 1
             }
         }).toArray();
-        res.json(reviews);
+        await res.render('find-restaurant.hbs', {'entries':reviews})
     } catch (e) {
         console.log(e);
         res.status(500);
@@ -146,7 +136,7 @@ async function main (){
 
 
     app.post('/mongo/write-review', async function(req,res){
-        console.log("load")
+        console.log(req.body)
         const results = await db.collection('reviews').insertOne({
             "restaurant": req.body.restaurant,
             "title": req.body.title,
@@ -155,13 +145,20 @@ async function main (){
             "ratings": req.body.ratings
             
         })
-        res.json({
-            'message':'New review created successfully',
-            'results': results
-        })
+    
+        res.redirect('/')
     })
     
-    app.put('/reviews/:reviewId', async function(req,res){
+    app.get('/reviews/:reviewId', async function(req,res){
+        const review = await db.collection('reviews').findOne({
+            '_id': ObjectID(req.params.reviewId)
+        })
+        console.log(review)
+        res.render('editreview.hbs', {'entries':review})
+
+
+    })
+    app.post('/edit/reviews/:reviewId', async function(req,res){
 
         const review = await db.collection('reviews').findOne({
             '_id': ObjectID(req.params.reviewId)
@@ -179,20 +176,15 @@ async function main (){
                 }
         })
 
-        
-        res.json({
-            'message':'Review updated',
-            'results': results
-        })
+        await res.redirect('/')
     })
 
-    app.delete('/reviews/:reviewId', async function (req, res) {
+    app.post('/delete/reviews/:reviewId', async function (req, res) {
+        console.log("deleted")
         await db.collection('reviews').deleteOne({
             '_id': ObjectID(req.params.reviewId)
         })
-        res.json({
-            'message': "Review deleted successfully"
-        })
+        res.redirect('/')
     })
 
     app.post('/reviews/:reviewId/comments', async function(req,res){
@@ -214,12 +206,12 @@ async function main (){
         })
     })
 
-    app.get('/reviews/:reviewId', async function(req,res){
-        const review = await db.collection('reviews').findOne({
-            _id:ObjectID(req.params.reviewId)
-        });
-        res.json(review);
-    })
+    // app.get('/reviews/:reviewId', async function(req,res){
+    //     const review = await db.collection('reviews').findOne({
+    //         _id:ObjectID(req.params.reviewId)
+    //     });
+    //     res.json(review);
+    // })
 
     app.put('/comments/:commentId/update', async function(req,res){
         const results = await db.collection('reviews').updateOne({
