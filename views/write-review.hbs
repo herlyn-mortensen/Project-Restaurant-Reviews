@@ -3,7 +3,40 @@
 {{#block "content"}}
 
 <h1>Write Review</h1>
-
+<form method="POST" action="/mongo/write-review">
+    <div>
+        <label>Restaurant</label>
+        <input type="text" name="restaurantName" class="form-control"/>
+    </div>
+    <div>
+        <label>Title:</label>
+        <input type="text" name="title" class="form-control"/>
+    </div> 
+    <div>
+        <label>Cuisine:</label>
+        <input type="text" name="cuisine" class="form-control"/>
+    </div>
+    <div>
+        <label>Write Review</label>  
+        <input type="text" name="review" class="form-control"/>
+    </div>
+    <div>
+        <label>Ratings</label>  
+        <input type="radio" class="form-check-input" name="rating" value="1"/>
+        <label class="form-check-label">1 star</label>
+        <input type="radio" class="form-check-input" name="rating" value="2" />
+        <label class="form-check-label">2 star</label>
+        <input type="radio" class="form-check-input" name="rating" value="3"/>
+        <label class="form-check-label">3 star</label>
+        <input type="radio" class="form-check-input" name="rating" value="4"/>
+        <label class="form-check-label">4 star</label>
+        <input type="radio" class="form-check-input" name="rating" value="5"/>
+        <label class="form-check-label">5 star</label>
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary mt-3"/>
+    </div>
+</form>
 
 {{/block}}
 {{/extends}}
