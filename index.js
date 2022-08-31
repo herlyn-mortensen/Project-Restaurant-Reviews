@@ -39,6 +39,10 @@ app.get('/login', function(req, res){
     res.render('login.hbs');
 })
 
+app.get('/sign-up', function(req, res){
+    res.render('sign-up.hbs');
+})
+
 
 app.get('/write-review', function(req,res){
     res.render('write-review.hbs')
@@ -274,10 +278,7 @@ async function main (){
             "password": req.body.password
         });
 
-        res.json({
-            'message': 'User has been created',
-            'results': results
-        })
+        res.redirect('/')
     })
 
     app.post('/login', async function(req,res){
@@ -293,9 +294,7 @@ async function main (){
             })
         } else {
             res.status(401);
-            res.json({
-                'message': 'Invalid email or password'
-            })
+            res.redirect('/sign-up')
         }
     })
 
