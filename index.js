@@ -13,7 +13,7 @@ app.set('views', path.join(__dirname,'/views/'));
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-// console.log(process.env);
+console.log(process.env);
 
 const mongoUtil = require('./MongoUtil');
 const { ObjectID } = require('bson');
