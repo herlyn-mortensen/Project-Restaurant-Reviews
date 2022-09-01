@@ -19,7 +19,7 @@ The sites main feature is to the collection of restaurant reviews - the users ca
 
 With pending implementations, the site has plans on adding photo uploading feature with better UI and descriptions as shown on the Figma link, as well as adding comments on reviews. 
 
-For the bugs and limitations,the site that the /'review'/:reviewID url which is part of the "edit" feature - is not responding to the css link I created, making it look messy.
+For the bugs and limitations,the site that the /'review'/:reviewID url which is part of the "edit" feature - is not responding to the css link I created, making it look messy. Lastly, the .env file which was placed on the .gitignore is still showing on this repository. 
 
 
 ### MONGO SAMPLE DOCUMENTS
@@ -28,17 +28,12 @@ For the bugs and limitations,the site that the /'review'/:reviewID url which is 
 
 ![Screenshot 2022-09-01 at 17 07 07](https://user-images.githubusercontent.com/91460556/187948500-a3cb9bd9-0ee1-4b70-817f-963b63cfd34c.png)
 
+#### USERS COLLECTION
+
+![Screenshot 2022-09-01 at 18 04 47](https://user-images.githubusercontent.com/91460556/187961156-3a3f879a-289a-48d6-b311-e799c6c1315b.png)
 
 
-### API DOCUMENTATION
-
-| Title | Write a review about the restaurant | 
-| :---: | :---: | 
-| Method | POST | 
-| Endpoint Path | mongo/write-review | 
-| Body | ![Screenshot 2022-09-01 at 17 25 33](https://user-images.githubusercontent.com/91460556/187952653-c84b4ff8-3d86-4e68-b1c1-2451116e7044.png)| 
-| Parameters | restaurant, title, cuisine, review, ratings | 
-| Expected Response | "status": 200|
+### API DOCUMENTATION AND TEST CASES
 
 | Title | Write a review about the restaurant | 
 | :---: | :---: | 
@@ -48,9 +43,21 @@ For the bugs and limitations,the site that the /'review'/:reviewID url which is 
 | Parameters | restaurant, title, cuisine, review, ratings | 
 | Expected Response | "status": 200|
 
+| Title | Find a review about the restaurant | 
+| :---: | :---: | 
+| Method | GET | 
+| Endpoint Path | /find-restaurant | 
+| Body | N/A| 
+| Parameters | N/A | 
+| Expected Response |![Screenshot 2022-09-01 at 18 26 16](https://user-images.githubusercontent.com/91460556/187965153-b2d67041-8a85-4614-9b7c-dad99aeb5c05.png)|
 
-### TEST CASES
-
+| Title | Delete a review | 
+| :---: | :---: | 
+| Method | POST | 
+| Endpoint Path | /delete/reviews/:reviewId | 
+| Body |![Screenshot 2022-09-01 at 18 28 16](https://user-images.githubusercontent.com/91460556/187965512-ba9801df-86b6-412c-86ab-938aca7e2898.png)| 
+| Parameters | restaurant, title, cuisine, review, ratings | 
+| Expected Response | {}deleted|
 
 
 
