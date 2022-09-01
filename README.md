@@ -3,10 +3,15 @@
 
 ### PROJECT OVERVIEW
 
-Data is crucial not just for assessing the global impact of COVID-19, but also for informing appropriate reaction, planning, and resource allocation. The pandemic has highlighted the value of data more than anything else.
+Potential customers will always put their trust in other customers before the establishment. That's the allure of social proof marketing. While your business's promotional and advertising activities will undoubtedly bring in new customers, nothing beats the support of existing customers who can attest to the quality of your items.
 
-Covid-19 Updates aims to provide updated data of confirmed Covid-19 cases and vaccine rate per country. It can cater to the general public users, the government, especially the tourism sector. Given that data organization is its foundation, it would deliver a systematized flow of information to the user. As a result, it helps provide information about how a country is doing in terms of the Corona virus infection and protection. 
+Users consider online reviews to be more credible than any other advertisement. The reviews will speak for themselves if the restaurants do their utmost to provide exceptional customer service. People now recommend restaurants to their friends and family based on online ratings.
 
-The data structure should be easy to understand for general public users, and the site should be able to provide country filters, a bar chart for confirmed cases, and a pie chart for vaccine rates - stating the completely vaccinated, partially vaccinated, and non-vaccinated per country.
+This app targets food lovers and it focuses on online reviews of restaurants around the city. 
 
-**LIVE SITE [DEMO](https://herlyn-mortensen.github.io/Project-Restaurant-Reviews/)** :tent:
+![Screenshot 2022-09-01 at 16 16 12](https://user-images.githubusercontent.com/91460556/187937793-b38b07ce-30b8-4528-9c97-8e62723dce46.png)
+
+**FIGMA (FOR GUIDANCE) [DESIGN](https://www.figma.com/file/DCI4Nlu5kR6pCmxHsUSTxm/Project-2?node-id=0%3A1)** :tent:
+
+
+
