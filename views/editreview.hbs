@@ -1,8 +1,9 @@
 {{#extends 'base'}}
 {{#block "content"}}
 
-<h1>Write Review</h1>
-<form method="POST" action="/edit/reviews/{{entries._id}}">
+<h1>Edit Review</h1>
+<form method="GET" action="/edit/reviews/{{entries._id}}">
+    <input type="hidden" name="_id" value="{{entries._id}}" class="form-control"/>
     <div>
         <label>Restaurant</label>
         <input type="text" name="restaurant" value="{{entries.restaurant}}" class="form-control"/>
