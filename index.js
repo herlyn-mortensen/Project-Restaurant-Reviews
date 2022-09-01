@@ -210,56 +210,6 @@ async function main (app, db){
 
 
 
-    app.post('/reviews/:reviewId/comments', async function(req,res){
-        const results = await db.collection('reviews').updateOne({
-            _id: ObjectID(req.params.reviewId)
-        },{
-            '$push':{
-                'comments':{
-                    '_id': ObjectID(),
-                    'content': req.body.content,
-                    'nickname': req.body.nickname
-                }
-            }
-        })
-
-        res.json({
-            'message': 'Comment has been added successfully',
-            'results': results
-        })
-    })
-
-
-    app.put('/comments/:commentId/update', async function(req,res){
-        const results = await db.collection('reviews').updateOne({
-            'comments._id':ObjectID(req.params.commentId)
-        },{
-            '$set': {
-                'comments.$.content': req.body.content,
-                'comments.$.nickname': req.body.nickname
-            }
-        })
-        res.json({
-            'message': 'Comment updated',
-            'results': results
-        })
-    })
-    app.delete('/comments/:commentId', async function(req,res){
-        const results = await db.collection('reviews').updateOne({
-            'comments._id': ObjectID(req.params.commentId)
-        }, {
-            '$pull': {
-                'comments': {
-                    '_id': ObjectID(req.params.commentId)
-                }
-            }
-        })
-        res.json({
-            'message': 'Comment deleted',
-            'result': results
-        })
-    })
-
     app.post('/users', async function (req, res) {
         const results = await db.collection('users').insertOne({
             "email": req.body.email,
