@@ -22,3 +22,69 @@ With pending implementations, the site has plans on adding photo uploading featu
 For the bugs and limitations,the site that the /'review'/:reviewID url which is part of the "edit" feature - is not responding to the css link I created, making it look messy.
 
 
+### MONGO SAMPLE DOCUMENTS
+
+#### RESTAURANT-REVIEWS COLLECTION
+
+![Screenshot 2022-09-01 at 17 07 07](https://user-images.githubusercontent.com/91460556/187948500-a3cb9bd9-0ee1-4b70-817f-963b63cfd34c.png)
+
+
+
+### API DOCUMENTATION
+
+| Title | Write a review about the restaurant | 
+| :---: | :---: | 
+| Method | POST | 
+| Endpoint Path | mongo/write-review | 
+| Body | ![Screenshot 2022-09-01 at 17 25 33](https://user-images.githubusercontent.com/91460556/187952653-c84b4ff8-3d86-4e68-b1c1-2451116e7044.png)| 
+| Parameters | restaurant, title, cuisine, review, ratings | 
+| Expected Response | "status": 200|
+
+| Title | Write a review about the restaurant | 
+| :---: | :---: | 
+| Method | POST | 
+| Endpoint Path | mongo/write-review | 
+| Body | ![Screenshot 2022-09-01 at 17 25 33](https://user-images.githubusercontent.com/91460556/187952653-c84b4ff8-3d86-4e68-b1c1-2451116e7044.png)| 
+| Parameters | restaurant, title, cuisine, review, ratings | 
+| Expected Response | "status": 200|
+
+
+### TEST CASES
+
+
+
+
+### PLATFORM USED
+
+- Github for CI/CD
+- Gitpod.io
+- Dependencies used:
+  - NodeJS 
+  - NodeJS depencies: 
+    - "cors": "^2.8.5",
+    - "dotenv": "^16.0.2",
+    - "express": "^4.18.1",
+    - "handlebars-helpers": "^0.10.0",
+    - "hbs": "^4.2.0",
+    - "jsonwebtoken": "^8.5.1",
+    - "mongodb": "^4.9.0",
+    - "wax-on": "^1.2.2",
+    - "yarn": "^1.22.19"
+  - MongoDB
+  - HTML, CSS and Bootstrap
+  - Google fonts, Fontawesome and Canva.
+
+
+### CREDITS
+
+- DATA:
+  - DWAD-E Trent Global class recordings.
+  - https://tripAdvisor.com
+
+- ILLUSTRATIONS
+  - https://www.canva.com/
+
+- FONTS
+  - https://fonts.google.com/
+
+
