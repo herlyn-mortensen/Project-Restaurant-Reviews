@@ -48,6 +48,10 @@ app.get('/write-review', function(req,res){
     res.render('write-review.hbs')
 })
 
+app.get('/home', function(req,res){
+    res.render('home.hbs')
+})
+
 // app.get('/reviews', function(req,res){
 //     res.render('editreview.hbs')
 // })
@@ -152,7 +156,7 @@ async function main (){
             
         })
     
-        res.redirect('/')
+        res.redirect('/home')
     })
     
     app.get('/reviews/:reviewId', async function(req,res){
@@ -278,7 +282,7 @@ async function main (){
             "password": req.body.password
         });
 
-        res.redirect('/')
+        res.redirect('/home')
     })
 
     app.post('/login', async function(req,res){
