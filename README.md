@@ -59,7 +59,13 @@ For the bugs and limitations,the site that the /'review'/:reviewID url which is 
 | Parameters | restaurant, title, cuisine, review, ratings | 
 | Expected Response | {}deleted|
 
-
+| Title | Edit a review | 
+| :---: | :---: | 
+| Method | POST | 
+| Endpoint Path | /edit/reviews/:reviewId | 
+| Body |![Screenshot 2022-09-01 at 18 31 35](https://user-images.githubusercontent.com/91460556/187966117-47f7df52-7aab-4db7-b4fe-0cf97c400f69.png)| 
+| Parameters | restaurant, title, cuisine, review, ratings | 
+| Expected Response | 302: Found |
 
 ### PLATFORM USED
 
