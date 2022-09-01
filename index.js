@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const hbs = require('hbs');
 const wax = require('wax-on');
-const mongoose = require('mongoose');
+
 
 const app = express();
 app.set('view engine', 'hbs');
@@ -19,7 +19,6 @@ const mongoUtil = require('./MongoUtil');
 const { ObjectID } = require('bson');
 
 app.use(express.static(__dirname + '/public'));
-// app.use(express.static('public'));
 app.use(express.urlencoded({
     'extended': false  
 }))
@@ -57,9 +56,6 @@ app.get('/home', function(req,res){
     res.render('home.hbs')
 })
 
-// app.get('/editreview', function(req,res){
-//     res.render('editreview.hbs')
-// })
 
 const MONGO_URI = process.env.MONGO_URI;
 const DB_NAME = process.env.DB_NAME;
@@ -103,10 +99,13 @@ function checkIfAuthenticatedJWT(req, res, next){
 }
 
 
-async function main (){
-    const db = await mongoUtil.connect(MONGO_URI, DB_NAME);
    
-   
+console.log(new Date(), "Connecting to server...")
+mongoUtil.connect(MONGO_URI, DB_NAME).then((db) => {
+    main(app, db)
+});
+
+async function main (app, db){
 
     app.get('/find-restaurant', async function(req,res){
        
@@ -164,68 +163,40 @@ async function main (){
         res.redirect('/home')
     })
     
-    app.get('/reviews/:reviewId', async function(req,res){
+
+    app.post('/reviews/:reviewId', async function(req,res){
+        console.log(req.body)
+
         const review = await db.collection('reviews').findOne({
             '_id': ObjectID(req.params.reviewId)
         })
-        console.log(review)
-        res.render('editreview.hbs', {'entries':review})
-
+        
+        await res.render('editreview.hbs', {'entries':review})
+      
     })
 
-    app.get('/edit/reviews/:reviewId', async function(req,res){
+    app.post('/edit/reviews/:reviewId', async function(req,res){
 
-        const review = await db.collection('reviews').findOne({
-            '_id': mongoose.Types.ObjectId(req.params.reviewId)
-        })
-        console.log(req.params)
-
-        const results = db.collection('reviews').findOneAndUpdate({
-            '_id': mongoose.Types.ObjectId(req.params.reviewId)
-        },{ 
-            'restaurant': req.body.restaurant ? req.body.restaurant : review.restaurant,
-            'title': req.body.title ? req.body.title : review.title,
-            'cuisine': req.body.cuisine ? req.body.cuisine : review.cuisine,
-            'review': req.body.review ? req.body.review : review.review,
-            'ratings': req.body.ratings ? req.body.ratings : review.ratings,
+        const review = await db.collection('reviews').find({
+            '_id': ObjectID(req.params.reviewId)
         })
 
+    
+        const results = await db.collection('reviews').updateOne({
+            '_id': ObjectID(req.params.reviewId)
+        }, {
+            "$set": {
+                'title': req.body.title ? req.body.title : review.title,
+                'food': req.body.food ? req.body.food : review.food,
+                'cuisine': req.body.cuisine ? req.body.cuisine : review.cuisine,
+                'content': req.body.content ? req.body.content : review.content,
+                'rating': req.body.rating ? req.body.rating : review.rating
+            }
+        })
 
-        // const results = await db.collection('reviews').updateOne({
-        //     '_id': ObjectID(req.params.reviewId)
-        //     },{
-        //         "$set":{
-        //             'restaurant': req.body.restaurant ? req.body.restaurant : review.restaurant,
-        //             'title': req.body.title ? req.body.title : review.title,
-        //             'cuisine': req.body.cuisine ? req.body.cuisine : review.cuisine,
-        //             'review': req.body.review ? req.body.review : review.review,
-        //             'ratings': req.body.ratings ? req.body.ratings : review.ratings,
-        //         }
-        // })
-
-        await res.json(results)
+        
+        await res.redirect('/find-restaurant')
     })
-
-    // app.put('/edit/reviews/:reviewId', async function (req, res) {
-
-    //     const review = await db.collection('reviews').findOne({
-    //         '_id': ObjectID(req.params.reviewId)
-    //     })
-
-    //     const results = await db.collection('reviews').updateOne({
-    //         '_id': ObjectID(req.params.reviewId)
-    //     }, {
-    //         "$set": {
-    //             'title': req.body.title ? req.body.title : review.title,  // review is the original document
-    //             'food': req.body.food ? req.body.food : review.food,
-    //             'content': req.body.content ? req.body.content : review.content,
-    //             'rating': req.body.rating ? req.body.rating : review.rating
-    //         }
-    //     })
-
-    //     res.render('find-restaurant.hbs')
-    // })
-
 
 
 
@@ -258,12 +229,6 @@ async function main (){
         })
     })
 
-    app.get('/reviews/:reviewId', async function(req,res){
-        const review = await db.collection('reviews').findOne({
-            _id:ObjectID(req.params.reviewId)
-        });
-        res.json(review);
-    })
 
     app.put('/comments/:commentId/update', async function(req,res){
         const results = await db.collection('reviews').updateOne({
@@ -326,19 +291,17 @@ async function main (){
         res.json({
             'email': req.user.email,
             'id': req.user.id,
-            'message': 'You are viewing your profile'
         })
 
-
-
     })
-}
-
-main();
 
 
 app.listen(3000, function(){
     console.log("Server has started")
 })
+}
+
+
+
 
 
