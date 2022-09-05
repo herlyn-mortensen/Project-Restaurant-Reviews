@@ -13,7 +13,7 @@ app.set('views', path.join(__dirname,'/views/'));
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-console.log(process.env);
+//console.log(process.env);
 
 const mongoUtil = require('./MongoUtil');
 const { ObjectID } = require('bson');
@@ -24,7 +24,6 @@ app.use(express.urlencoded({
 }))
 app.use(cors());
 app.use(express.json())
-
 
 
 wax.on(hbs.handlebars);
@@ -206,6 +205,36 @@ async function main (app, db){
             '_id': ObjectID(req.params.reviewId)
         })
         res.redirect('/')
+    })
+
+    app.put('/comments/:commentId/update', async function(req,res){
+        const results = await db.collection('reviews').updateOne({
+            'comments._id':ObjectID(req.params.commentId)
+        },{
+            '$set': {
+                'comments.$.content': req.body.content,
+                'comments.$.nickname': req.body.nickname
+            }
+        })
+        res.json({
+            'message': 'Comment updated',
+            'results': results
+        })
+    })
+    app.delete('/comments/:commentId', async function(req,res){
+        const results = await db.collection('reviews').updateOne({
+            'comments._id': ObjectID(req.params.commentId)
+        }, {
+            '$pull': {
+                'comments': {
+                    '_id': ObjectID(req.params.commentId)
+                }
+            }
+        })
+        res.json({
+            'message': 'Comment deleted',
+            'result': results
+        })
     })
 
 
