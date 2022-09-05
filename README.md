@@ -50,9 +50,9 @@ For the bugs and limitations,the site that the /'review'/:reviewID url which is 
 | :---: | :---: | 
 | Method | GET | 
 | Endpoint Path | /find-restaurant | 
-| Body | N/A| 
+| Body | ![Screenshot 2022-09-05 at 22 50 33](https://user-images.githubusercontent.com/91460556/188511537-5b94afb0-5f3e-41f3-bf0d-b0d56b1cdfe8.png)| 
 | Parameters | N/A | 
-| Expected Response |![Screenshot 2022-09-01 at 18 26 16](https://user-images.githubusercontent.com/91460556/187965153-b2d67041-8a85-4614-9b7c-dad99aeb5c05.png)|
+| Expected Response | ![Screenshot 2022-09-05 at 22 31 38](https://user-images.githubusercontent.com/91460556/188510626-37a2e0a4-4cc4-41e0-8976-9b2b64d9a7ff.png)|
 
 | Title | Delete a review | 
 | :---: | :---: | 
