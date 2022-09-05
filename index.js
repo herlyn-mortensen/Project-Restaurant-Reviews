@@ -131,6 +131,7 @@ async function main (app, db){
                 '_id': 1,
                 'restaurant': 1,
                 'title': 1,
+                'date': 1,
                 'cuisine': 1,
                 'review': 1,
                 'ratings': 1
@@ -153,6 +154,7 @@ async function main (app, db){
         const results = await db.collection('reviews').insertOne({
             "restaurant": req.body.restaurant,
             "title": req.body.title,
+            "date": req.body.date,
             "cuisine": req.body.cuisine,
             "review": req.body.review,
             "ratings": req.body.ratings
@@ -185,10 +187,11 @@ async function main (app, db){
             '_id': ObjectID(req.params.reviewId)
         }, {
             "$set": {
+                'restaurant': req.body.restaurant ? req.body.food : review.restaurant,
                 'title': req.body.title ? req.body.title : review.title,
-                'food': req.body.food ? req.body.food : review.food,
+                'date': req.body.date ? req.body.date : review.date,
                 'cuisine': req.body.cuisine ? req.body.cuisine : review.cuisine,
-                'content': req.body.content ? req.body.content : review.content,
+                'review': req.body.review ? req.body.review : review.review,
                 'rating': req.body.rating ? req.body.rating : review.rating
             }
         })
