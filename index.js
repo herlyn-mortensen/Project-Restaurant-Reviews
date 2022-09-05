@@ -221,7 +221,7 @@ async function main (app, db){
             '$push':{
                 'comments':{
                     '_id': ObjectID(),
-                    'content': req.body.content,
+                    'review': req.body.review,
                     'nickname': req.body.nickname
                 }
             }
@@ -239,7 +239,7 @@ async function main (app, db){
             'comments._id':ObjectID(req.params.commentId)
         },{
             '$set': {
-                'comments.$.content': req.body.content,
+                'comments.$.review': req.body.review,
                 'comments.$.nickname': req.body.nickname
             }
         })
