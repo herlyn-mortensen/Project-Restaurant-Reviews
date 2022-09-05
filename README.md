@@ -68,6 +68,32 @@ For the bugs and limitations,the site that the /'review'/:reviewID url which is 
 | Parameters | restaurant, title, cuisine, review, ratings | 
 | Expected Response | 302: Found |
 
+| Title | Write a comment | 
+| :---: | :---: | 
+| Method | POST | 
+| Endpoint Path | '/reviews/:reviewId/comments' | 
+| Body |![Screenshot 2022-09-05 at 16 37 59](https://user-images.githubusercontent.com/91460556/188473409-39588c5a-df97-4b32-854a-89b7d05abca8.png)| 
+| Parameters | review (string): Review of the restaurant |
+||nickname (string): name of reviewer |
+| Expected Response | 'Comment has been added successfully' |
+
+| Title | Edit a comment | 
+| :---: | :---: | 
+| Method | PUT | 
+| Endpoint Path | '/comments/:commentId/update' | 
+| Body |![Screenshot 2022-09-05 at 16 45 43](https://user-images.githubusercontent.com/91460556/188474765-e0639b1a-96e1-47b8-8df9-68b90a88471c.png)| 
+| Parameters | review (string): Review of the restaurant |
+||nickname (string): name of reviewer |
+| Expected Response | 'Comment updated' |
+
+| Title | Delete a comment | 
+| :---: | :---: | 
+| Method | DELETE | 
+| Endpoint Path | '/comments/:commentId' | 
+| Body |![Screenshot 2022-09-05 at 17 04 01](https://user-images.githubusercontent.com/91460556/188477989-15628811-e224-45ee-8d84-dc20e1b5070e.png)| 
+| Parameters | commentID |
+| Expected Response | 'Comment deleted' |
+
 ### PLATFORM USED
 
 - Github for CI/CD
