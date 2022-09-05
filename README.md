@@ -26,7 +26,8 @@ For the bugs and limitations,the site that the /'review'/:reviewID url which is 
 
 #### RESTAURANT-REVIEWS COLLECTION
 
-![Screenshot 2022-09-01 at 17 07 07](https://user-images.githubusercontent.com/91460556/187948500-a3cb9bd9-0ee1-4b70-817f-963b63cfd34c.png)
+![Screenshot 2022-09-05 at 14 58 42](https://user-images.githubusercontent.com/91460556/188455034-edccca8f-1248-4c1b-9338-836614603550.png)
+
 
 #### USERS COLLECTION
 
@@ -39,8 +40,8 @@ For the bugs and limitations,the site that the /'review'/:reviewID url which is 
 | :---: | :---: | 
 | Method | POST | 
 | Endpoint Path | mongo/write-review | 
-| Body | ![Screenshot 2022-09-01 at 17 25 33](https://user-images.githubusercontent.com/91460556/187952653-c84b4ff8-3d86-4e68-b1c1-2451116e7044.png)| 
-| Parameters | restaurant, title, cuisine, review, ratings | 
+| Body |![Screenshot 2022-09-05 at 15 03 19](https://user-images.githubusercontent.com/91460556/188456017-5ed85ebb-8da1-497b-8d23-e9b0cab5ca4d.png)| 
+| Parameters | restaurant, title, date, cuisine, food ordered, review, ratings | 
 | Expected Response | "status": 200|
 
 | Title | Find a review about the restaurant | 
@@ -63,7 +64,7 @@ For the bugs and limitations,the site that the /'review'/:reviewID url which is 
 | :---: | :---: | 
 | Method | POST | 
 | Endpoint Path | /edit/reviews/:reviewId | 
-| Body |![Screenshot 2022-09-01 at 18 31 35](https://user-images.githubusercontent.com/91460556/187966117-47f7df52-7aab-4db7-b4fe-0cf97c400f69.png)| 
+| Body |![Screenshot 2022-09-05 at 15 01 08](https://user-images.githubusercontent.com/91460556/188455833-a5ce17b1-4d06-42f8-a315-48e90fe50842.png)| 
 | Parameters | restaurant, title, cuisine, review, ratings | 
 | Expected Response | 302: Found |
 
