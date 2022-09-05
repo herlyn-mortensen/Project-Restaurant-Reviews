@@ -2,7 +2,7 @@
 {{#block "content"}}
 
 <h1>Edit Review</h1>
-    <form method="PUT" action="/edit/reviews/{{entries._id}}">
+    <form method="POST" action="/edit/reviews/{{entries._id}}">
         <div>
             <label>Restaurant</label>
             <input type="text" name="restaurant" value="{{entries.restaurant}}" class="form-control"/>

@@ -178,7 +178,7 @@ async function main (app, db){
       
     })
 
-    app.put('/edit/reviews/:reviewId', async function(req,res){
+    app.post('/edit/reviews/:reviewId', async function(req,res){
 
         const review = await db.collection('reviews').find({
             '_id': ObjectID(req.params.reviewId)
