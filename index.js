@@ -213,6 +213,27 @@ async function main (app, db){
         res.redirect('/')
     })
 
+
+    app.post('/reviews/:reviewId/comments', async function(req,res){
+        const results = await db.collection('reviews').updateOne({
+            _id: ObjectID(req.params.reviewId)
+        },{
+            '$push':{
+                'comments':{
+                    '_id': ObjectID(),
+                    'content': req.body.content,
+                    'nickname': req.body.nickname
+                }
+            }
+        })
+
+        res.json({
+            'message': 'Comment has been added successfully',
+            'results': results
+        })
+    })
+
+
     app.put('/comments/:commentId/update', async function(req,res){
         const results = await db.collection('reviews').updateOne({
             'comments._id':ObjectID(req.params.commentId)
