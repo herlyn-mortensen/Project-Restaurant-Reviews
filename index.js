@@ -133,6 +133,7 @@ async function main (app, db){
                 'title': 1,
                 'date': 1,
                 'cuisine': 1,
+                'foodordered': 1,
                 'review': 1,
                 'ratings': 1
             }
@@ -156,6 +157,7 @@ async function main (app, db){
             "title": req.body.title,
             "date": req.body.date,
             "cuisine": req.body.cuisine,
+            "foodordered": req.body.foodordered,
             "review": req.body.review,
             "ratings": req.body.ratings
             
@@ -176,7 +178,7 @@ async function main (app, db){
       
     })
 
-    app.post('/edit/reviews/:reviewId', async function(req,res){
+    app.put('/edit/reviews/:reviewId', async function(req,res){
 
         const review = await db.collection('reviews').find({
             '_id': ObjectID(req.params.reviewId)
@@ -191,6 +193,7 @@ async function main (app, db){
                 'title': req.body.title ? req.body.title : review.title,
                 'date': req.body.date ? req.body.date : review.date,
                 'cuisine': req.body.cuisine ? req.body.cuisine : review.cuisine,
+                'foodordered': req.body.foodordered ? req.body.foodordered : review.foodordered,
                 'review': req.body.review ? req.body.review : review.review,
                 'rating': req.body.rating ? req.body.rating : review.rating
             }

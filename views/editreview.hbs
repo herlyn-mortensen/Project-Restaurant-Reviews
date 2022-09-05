@@ -2,7 +2,7 @@
 {{#block "content"}}
 
 <h1>Edit Review</h1>
-    <form method="POST" action="/edit/reviews/{{entries._id}}">
+    <form method="PUT" action="/edit/reviews/{{entries._id}}">
         <div>
             <label>Restaurant</label>
             <input type="text" name="restaurant" value="{{entries.restaurant}}" class="form-control"/>
@@ -10,11 +10,19 @@
         <div>
             <label>Title:</label>
             <input type="text" name="title" value="{{entries.title}}" class="form-control"/>
+        </div>
+        <div>
+            <label>Date:</label>
+            <input type="text" name="date" value="{{entries.date}}" class="form-control"/>
         </div> 
         <div>
             <label>Cuisine:</label>
             <input type="text" name="cuisine" value="{{entries.cuisine}}" class="form-control"/>
         </div>
+        <div>
+            <label>Food ordered:</label>
+            <input type="text" name="date" value="{{entries.foodordered}}" class="form-control"/>
+        </div> 
         <div>
             <label>Write Review</label>  
             <input type="text" name="review" value="{{entries.review}}" class="form-control"/>
